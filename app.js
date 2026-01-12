@@ -2,26 +2,30 @@ const express = require("express");
 
 const app = express();
 
-const path = require("path")
+const path = require("path");
 
-const {connectToMongoDb}= require("./handlers/mongoDbHandler.js")
+const { connectToMongoDb } = require("./handlers/mongoDbHandler.js");
 
 require("dotenv").config();
 
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 
 app.use(express.json());
 
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
-connectToMongoDb(process.env.mongodb)
+connectToMongoDb(process.env.mongodb);
 
-const main_router = require("./routes/default_router.js")
+const main_router = require("./routes/default_router.js");
 
-app.use(main_router)
+const auth_router = require("./routes/auth_routes.js");
 
-app.listen(3000, async()=>{
-    console.log("Server running on port 3000");
+app.use(main_router);
+
+app.use(auth_router);
+
+app.listen(3000, async () => {
+  console.log("Server running on port 3000");
 });
