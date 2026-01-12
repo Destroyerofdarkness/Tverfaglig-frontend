@@ -2,15 +2,19 @@ const express = require("express");
 
 const app = express();
 
+const path = require("path")
+
 const {connectToMongoDb}= require("./handlers/mongoDbHandler.js")
 
 require("dotenv").config();
+
+app.use(express.static(path.join(__dirname, "public")))
 
 app.set("view engine", "ejs");
 
 app.use(express.json());
 
-app.set(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 
 connectToMongoDb(process.env.mongodb)
 

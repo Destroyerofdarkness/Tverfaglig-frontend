@@ -1,0 +1,55 @@
+body, html{
+    width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: var(--primary);
+    flex-direction: column;
+}
+header{
+    padding-bottom: 0.3vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary);
+}
+#logo{
+     flex: 1;
+}
+header #logo img{
+   
+    display: flex;
+    align-self: baseline;
+    width: auto;
+    height: 5vw;
+}
+header h2{
+    margin: 0;
+    align-self: center;
+    font-weight: 400;
+    font-family: var(--primaryfont);
+    font-size: 2vw;
+    color: var(--primary);
+}
+header nav{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3vw;
+}
+header nav a{
+    border-radius: 0.7vw;
+    text-decoration: none;
+    padding: 0.4vw;
+    width: 8vw;
+    text-align: center;
+    font-size: 2vw;
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+:root{
+    --secondary: #906570;
+    --primary: #4F1B2F;
+    --primaryfont: "Joan", serif; ;
+}

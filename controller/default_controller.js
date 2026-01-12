@@ -11,8 +11,7 @@ const render_home = async(req,res)=>{
     try{
         const quoteList = await Quote.find()
         const quote = randomQoute(quoteList)
-        users()
-        res.render("index", {quote})
+        res.render("index", {quote, title: "Homepage"})
     }catch(err){
         res.status(500).send(err)
     }
