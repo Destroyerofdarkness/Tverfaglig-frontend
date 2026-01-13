@@ -38,17 +38,19 @@ header nav{
     display: flex;
     justify-content: flex-end;
     padding-right: 3vw;
+    gap: 0.7vw;
 }
 header nav a{
     border-radius: 0.7vw;
     text-decoration: none;
     padding: 0.4vw;
-    width: 8vw;
+    width: max-content;
     text-align: center;
     font-size: 2vw;
     background-color: var(--primary);
     color: var(--secondary);
 }
+
 button:hover{
     cursor: pointer;
 }

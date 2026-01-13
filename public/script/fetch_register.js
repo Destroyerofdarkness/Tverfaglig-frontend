@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
       const data = await res.json();
       if (data.success) {
-        window.location.href = "/";
+        window.location.href = `/home/${username}`;
       }
       if (data.errors) {
         console.log(data.errors);

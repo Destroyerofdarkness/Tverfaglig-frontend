@@ -6,7 +6,10 @@
 <h2><%= title %></h2>
 <nav>
     <% if(user){ %>
+    <a href="/">Home</a>
+    <a href="/home/<%= user.username %>">Profile</a>
     <a href="/sign-out">Log out</a>
+    <a href="/delete/<%= user.username %>">Delete Account</a>
     <% }else{ %>
         <a href="/sign-in">Log in</a>
         <% } %>

@@ -15,6 +15,7 @@ const user_page_priv_render = async (req, res, next) => {
     next();
   }
 };
+
 const user_page_priv_post = async (req, res) => {
   try {
     await Quote.publish(req.body);
@@ -24,5 +25,7 @@ const user_page_priv_post = async (req, res) => {
     res.status(300).json({errors})
   }
 };
+
+
 
 module.exports = { user_page_priv_render, user_page_priv_post };

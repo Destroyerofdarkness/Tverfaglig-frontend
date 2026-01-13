@@ -61,4 +61,14 @@ const sign_out_user =(req,res)=>{
   }
 };
 
-module.exports = { render_login, render_register, sign_up_user, sign_in_user,sign_out_user };
+const user_delete = async(req,res)=>{
+    const user = req.params.user
+    try{
+      await User.findOneAndDelete({username:user})
+      res.status(200).redirect("/sign-out")
+    }catch(err){
+        res.status(500).send(err)
+    }
+}
+
+module.exports = { render_login, render_register, sign_up_user, sign_in_user,sign_out_user, user_delete };
