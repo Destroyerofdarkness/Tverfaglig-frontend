@@ -14,7 +14,21 @@ const deleteUser = async(user)=>{
     }catch(err){
         console.log(err)
         return err;
+    };
+};
+
+const randomQuote = async()=>{
+    try{
+        const res = await fetch("http://localhost:4000/randomQuote",{
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+        })
+    const data = await res.json()
+    console.log(data)
+    return data.quote
+    }catch(err){
+        console.log(err)
     }
 }
 
-module.exports = {deleteUser}
+module.exports = {deleteUser, randomQuote}
