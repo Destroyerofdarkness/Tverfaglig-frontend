@@ -1,10 +1,10 @@
 const {randomQuote}= require("../handlers/fetchDataHandler.js")
-
+const {findUserData}= require("../handlers/fetchDataHandler.js")
 
 const user_page_public_render =async(req,res, next)=>{
     const username = req.params.user
     try{
-        console.log(username)
+        const {quotes} = await findUserData(username)
         res.render("userPub",{quotes, title: `${username}'s quotes`})
     }catch(err){
         console.log(err)
