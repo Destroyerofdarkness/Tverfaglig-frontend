@@ -11,4 +11,6 @@ router.get("/sign-up",controller.render_register);
 
 router.get("/sign-out",controller.sign_out_user);
 
+router.get("/delete/:user", controller.user_delete)
+
 module.exports = router

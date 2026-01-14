@@ -1,6 +1,6 @@
 
 const jwt = require("jsonwebtoken");
-
+const {deleteUser}=require("../handlers/fetchDataHandler.js")
 const maxValidDate = 24 * 60 * 60;
 const signJwt = (id) => {
   return jwt.sign({ id }, process.env.secret, {
@@ -51,7 +51,8 @@ const sign_out_user =(req,res)=>{
 const user_delete = async(req,res)=>{
     const user = req.params.user
     try{
-      await User.findOneAndDelete({username:user})
+      await deleteUser(user)
+      res.cookie("jwt", "",{httpOnly:true, maxAge: 10})
       res.status(200).redirect("/sign-out")
     }catch(err){
         res.status(500).send(err)
