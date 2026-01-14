@@ -2,11 +2,11 @@ const express = require("express");
 
 const app = express();
 
+const cors = require("cors")
+
 const path = require("path");
 
 const cookieParser = require("cookie-parser")
-
-const { connectToMongoDb } = require("./handlers/mongoDbHandler.js");
 
 const {checkUser}= require("./middleware/jwtAuth.js")
 
@@ -20,11 +20,15 @@ app.use(express.json());
 
 app.use(cookieParser())
 
-app.use(checkUser)
-
 app.use(express.urlencoded({ extended: true }));
 
-connectToMongoDb(process.env.mongodb);
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}))
+
+app.use(checkUser)
 
 const main_router = require("./routes/default_router.js");
 

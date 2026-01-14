@@ -1,6 +1,4 @@
-const User = require("../models/User.js");
-const Quote = require("../models/Quote.js");
-const {handleQuoteError}= require("../handlers/errorHandlers.js")
+
 
 
 const user_page_priv_render = async (req, res, next) => {
