@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const conPass = form.conPass.value;
     errorDiv.textContent = "";
     try {
-      const res = await fetch("http://localhost:4000/sign-up", {
+      const res = await fetch("http://backend.megatron.ikt-fag.no:6001/sign-up", {
         method: "POST",
         body: JSON.stringify({ username, passwd, conPass }),
         headers: { "Content-Type": "application/json" },
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         `;
       }
     } catch (err) {
-        console.log(err)
+      console.log(err);
     }
   });
 });

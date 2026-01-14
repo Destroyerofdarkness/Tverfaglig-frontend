@@ -3,19 +3,19 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   const form = document.querySelector("#publish");
 
-  const quoteError = document.querySelector(".quote.error")
-  const originError = document.querySelector(".origin.error")
+  const quoteError = document.querySelector(".quote.error");
+  const originError = document.querySelector(".origin.error");
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const quote = form.quote.value;
     const origin = form.origin.value;
     const user = form.createdBy.value;
 
-    quoteError.textContent = ""
-    originError.textContent = ""
+    quoteError.textContent = "";
+    originError.textContent = "";
     try {
-      const res = await fetch(`http://localhost:4000/home/${user}`, {
+      const res = await fetch(`http://backend.megatron.ikt-fag.no:6001/home/${user}`, {
         method: "POST",
         body: JSON.stringify({ quote, origin, user }),
         headers: { "Content-Type": "application/json" },
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
         window.location.reload();
       }
       if (data.errors) {
-        quoteError.textContent = data.errors.quote
-        originError.textContent = data.errors.origin
+        quoteError.textContent = data.errors.quote;
+        originError.textContent = data.errors.origin;
       }
     } catch (err) {
       console.log(err);
