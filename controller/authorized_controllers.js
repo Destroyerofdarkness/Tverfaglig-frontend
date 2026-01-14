@@ -1,13 +1,11 @@
-
+const {findUserData}=require("../handlers/fetchDataHandler.js")
 
 
 const user_page_priv_render = async (req, res, next) => {
   const username = req.params.user;
   try {
-    const quotes = await User.findQuotes(username);
-    const user = await User.findOne({ username: username });
-    console.log(quotes);
-    res.render("userPriv", { quotes, title: `Quotes - ${user.username}` });
+    const {quotes, user} = await findUserData(username)
+    res.render("userPriv", { quotes: quotes, title: `Quotes - ${user.username}` });
   } catch (err) {
     res.status(500).send(err);
     next();
