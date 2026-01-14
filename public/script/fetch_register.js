@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const conPass = form.conPass.value;
     errorDiv.textContent = "";
     try {
-      const res = await fetch("/sign-up", {
+      const res = await fetch("http://localhost:4000/sign-up", {
         method: "POST",
         body: JSON.stringify({ username, passwd, conPass }),
         headers: { "Content-Type": "application/json" },
       });
 
       const data = await res.json();
-      if (data.success) {
-        window.location.href = `/home/${username}`;
+      if (data.userId) {
+        window.location.href = `/cookie/${data.userId}`;
       }
       if (data.errors) {
         console.log(data.errors);

@@ -8,7 +8,7 @@ const path = require("path");
 
 const cookieParser = require("cookie-parser")
 
-const {checkUser}= require("./middleware/jwtAuth.js")
+const {getUser}= require("./middleware/jwtAuth.js")
 
 require("dotenv").config();
 
@@ -28,7 +28,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
-app.use(checkUser)
+app.use(getUser)
 
 const main_router = require("./routes/default_router.js");
 

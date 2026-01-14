@@ -16,15 +16,15 @@ const authenticate = (req, res, next) => {
   }
 };
 
-const checkUser = async(req,res,next) =>{
+const getUser = async(req,res,next) =>{
 const token = req.cookies.jwt
 try{
-  const getUser = await fetch(`http://localhost:4000/checkuser/${token}`,{
+  const getUsername = await fetch(`http://localhost:4000/checkuser/${token}`,{
     method: "POST",
     body: JSON.stringify({token}),
     headers: {"Content-Type": "application/json"}
   })
-  const data = await getUser.json()
+  const data = await getUsername.json()
   if(data.username){
     res.locals.user = data.username
     console.log(data.username)
@@ -48,4 +48,4 @@ const authorize = (req,res,next)=>{
     res.redirect(`/${user}`)
   }
 }
-module.exports = { authenticate, authorize, checkUser };
+module.exports = { authenticate, authorize, getUser };
