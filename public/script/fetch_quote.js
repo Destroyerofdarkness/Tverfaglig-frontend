@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     quoteError.textContent = ""
     originError.textContent = ""
     try {
-      const res = await fetch(`http://10.99.99.70:4000/home/${user}`, {
+      const res = await fetch(`http://localhost:4000/home/${user}`, {
         method: "POST",
         body: JSON.stringify({ quote, origin, user }),
         headers: { "Content-Type": "application/json" },
